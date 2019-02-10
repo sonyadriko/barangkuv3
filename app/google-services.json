@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "579529023412",
+    "firebase_url": "https://barangkuv3.firebaseio.com",
+    "project_id": "barangkuv3",
+    "storage_bucket": "barangkuv3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:579529023412:android:49ddcdb7ea9a2471",
+        "android_client_info": {
+          "package_name": "com.example.xdreamer.barangkuv3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "579529023412-9r900jmc1l9fefaceh4o0851oh13mg9c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVFaaS55CWV09RmLqQqWpdskUU1CoBpEc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

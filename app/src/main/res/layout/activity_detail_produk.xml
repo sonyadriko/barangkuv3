@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".DetailProduk">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- <ImageView
+                android:id="@+id/imageDetailProduk"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_gravity="center"
+                android:src="@drawable/load" />
+                -->
+
+            <com.glide.slider.library.SliderLayout
+                android:id="@+id/slider"
+                android:layout_width="match_parent"
+                android:layout_height="250dp" />
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/card1"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_below="@id/slider">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+
+                        android:id="@+id/namaDetailProduk"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="25dp"
+                        android:text="Judul Jualan"
+                        android:maxLines="2"
+                        android:textColor="#000"
+                        android:textSize="24dp" />
+
+
+                    <TextView
+                        android:id="@+id/hargaDetailProduk"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="25dp"
+                        android:layout_marginRight="6dp"
+                        android:layout_weight="1"
+                        android:text="50000"
+                        android:textAlignment="textEnd"
+                        android:textColor="#000"
+                        android:textSize="24dp" />
+
+                </LinearLayout>
+
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/card3"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:layout_below="@id/card1"
+                android:layout_marginTop="25dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_weight="1"
+                        android:text="STOK : "
+                        android:textColor="#000"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+
+                        android:id="@+id/stokDetailProduk"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_weight="1"
+                        android:text="2"
+                        android:textColor="#000"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/card2"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_below="@+id/card3"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="75dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="25dp"
+                        android:text="Deskripsi"
+                        android:textColor="#000"
+                        android:textSize="24dp" />
+
+                    <TextView
+                        android:id="@+id/deskDetailroduk"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="25dp"
+                        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut blandit posuere nisi, vel mattis orci egestas at. Praesent venenatis in risus a lacinia. Vestibulum sodales mi elit, id dapibus magna suscipit at. Quisque accumsan, ipsum et faucibus egestas, nibh mi congue diam, vitae maximus ipsum sapien sed magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nunc quis enim dapibus, fringilla metus vel, imperdiet turpis. Donec at nunc semper, consectetur massa non, faucibus odio. Morbi consequat massa sed purus scelerisque, vitae convallis velit gravida. Sed neque augue, vestibulum in scelerisque non, convallis eget dui. Fusce at nunc congue, vestibulum justo convallis, rhoncus tellus. Cras commodo eu enim eleifend facilisis. Sed sagittis turpis id nulla commodo, quis egestas elit feugiat. Donec efficitur bibendum mauris nec dapibus. "
+                        android:textColor="#000"
+                        android:textSize="14dp" />
+
+                </LinearLayout>
+
+
+            </android.support.v7.widget.CardView>
+
+
+        </RelativeLayout>
+
+
+    </ScrollView>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:background="#1a75ff"
+        android:text="Pesan Sekarang"
+        android:textColor="#fff" />
+
+</RelativeLayout>

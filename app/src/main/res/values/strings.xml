@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">BarangkuV3</string>
+
+    <!-- daftar akses -->
+    <string name="pembeli">pembeli</string>
+    <string name="penjual">penjual</string>
+    <string-array name="akses_daftar">
+        <item>pembeli</item>
+        <item>penjual</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

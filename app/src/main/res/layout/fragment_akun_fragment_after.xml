@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.AkunFragmentAfter">
+
+    <RelativeLayout
+        android:id="@+id/layoutMain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:padding="20dp">
+
+        <RelativeLayout
+            android:id="@+id/layoutAkun"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/picAkun"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/desain_image" />
+
+            <TextView
+                android:id="@+id/tvNamaAkun"
+                style="@style/Base.TextAppearance.AppCompat.Headline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_toEndOf="@+id/picAkun"
+                android:layout_toRightOf="@+id/picAkun" />
+
+            <TextView
+                android:id="@+id/tvEditAkun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvNamaAkun"
+                android:layout_marginLeft="20dp"
+                android:layout_toEndOf="@id/picAkun"
+                android:layout_toRightOf="@id/picAkun"
+                android:text="Edit profil" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</FrameLayout>
