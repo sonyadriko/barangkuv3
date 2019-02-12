@@ -72,13 +72,13 @@ public class DetailProduk extends AppCompatActivity {
 
 
         Intent p = getIntent();
-        String gambar = p.getStringExtra("imagebarang");
+        int gambar = p.getIntExtra("imagebarang", 0);
         String nama = p.getStringExtra("namabarang");
         int harga = p.getIntExtra("hargabarang", 6);
         String desk = p.getStringExtra("deskbarang");
 
 
-        imageView.setImageResource(Integer.parseInt(gambar));
+        imageView.setImageResource((gambar));
         namaView.setText(nama);
         hargaView.setText("Rp. " + String.valueOf(harga));
         deskView.setText(desk);
