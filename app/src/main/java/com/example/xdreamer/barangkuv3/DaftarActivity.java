@@ -1,13 +1,10 @@
 package com.example.xdreamer.barangkuv3;
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -23,8 +20,6 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.List;
-
 public class DaftarActivity extends AppCompatActivity {
 
     private TextView nama_user, email_user, nohp_user, pass_user;
@@ -36,7 +31,7 @@ public class DaftarActivity extends AppCompatActivity {
     String namas, emails, passs, nohps;
     String akses[] = {"penjual, pembeli"};
     private Spinner spin;
-    ArrayAdapter <String> adapter;
+    ArrayAdapter<String> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,16 +73,21 @@ public class DaftarActivity extends AppCompatActivity {
                     auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                sendUserData();
-                              //  SaveDaftar.read(getApplicationContext(), "session", "true");
-                                Toast.makeText(DaftarActivity.this, "Succes", Toast.LENGTH_SHORT).show();
-                                auth.signOut();
-                                finish();
-                                startActivity(new Intent(DaftarActivity.this, MasukActivity.class));
+                            if (passs.length() < 8) {
+                                Toast.makeText(DaftarActivity.this, "password error", Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText(DaftarActivity.this, "Gagal", Toast.LENGTH_SHORT).show();
+                                if (task.isSuccessful()) {
+                                    sendUserData();
+                                    //  SaveDaftar.read(getApplicationContext(), "session", "true");
+                                    Toast.makeText(DaftarActivity.this, "Succes", Toast.LENGTH_SHORT).show();
+                                    auth.signOut();
+                                    finish();
+                                    startActivity(new Intent(DaftarActivity.this, MasukActivity.class));
+                                } else {
+                                    Toast.makeText(DaftarActivity.this, "Gagal", Toast.LENGTH_SHORT).show();
+                                }
                             }
+
                         }
                     });
                 }
@@ -103,7 +103,7 @@ public class DaftarActivity extends AppCompatActivity {
         emails = email_user.getText().toString();
         nohps = nohp_user.getText().toString();
 
-        if (namas.isEmpty() || passs.isEmpty() || emails.isEmpty() || nohps.isEmpty()) {
+        if (namas.isEmpty() || passs.isEmpty() || emails.isEmpty() || nohps.isEmpty() || passs.length() < 8) {
             Toast.makeText(this, "Please enter all the details", Toast.LENGTH_SHORT).show();
         } else {
             result = true;

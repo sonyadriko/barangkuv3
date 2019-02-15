@@ -1,38 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
 
-    <item
-        android:id="@+id/menu_login"
-        android:icon="@drawable/ic_login"
-        android:title="login"
-        android:visible="true" />
-    <item
-        android:id="@+id/menu_daftar"
-        android:icon="@drawable/ic_daftar"
-        android:title="daftar"
-        android:visible="true" />
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/menu_masuk"
+            android:icon="@drawable/ic_login"
+            android:title="masuk"
+            android:visible="true" />
+        <item
+            android:id="@+id/menu_daftar"
+            android:icon="@drawable/ic_daftar"
+            android:title="daftar"
+            android:visible="true" />
 
-    <item
-        android:id="@+id/menu_home"
-        android:icon="@drawable/ic_home_black_24dp"
-        android:title="daftar"
-        android:visible="false" />
+        <item
+            android:id="@+id/menu_home"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="daftar"
+            android:visible="false" />
 
-    <item
-        android:id="@+id/menu_kategori"
-        android:icon="@drawable/ic_business_black_24dp"
-        android:title="kategori"
-        android:visible="false" />
+        <item
+            android:id="@+id/menu_kategori"
+            android:icon="@drawable/ic_business_black_24dp"
+            android:title="kategori"
+            android:visible="false" />
 
-    <item
-        android:id="@+id/menu_keranjang"
-        android:icon="@drawable/ic_shopping_cart_black_24dp"
-        android:title="keranjang"
-        android:visible="false" />
+        <item
+            android:id="@+id/menu_keranjang"
+            android:icon="@drawable/ic_shopping_cart_black_24dp"
+            android:title="keranjang"
+            android:visible="false" />
 
-    <item
-        android:id="@+id/menu_logout"
-        android:icon="@drawable/ic_close_black_24dp"
-        android:title="logout"
-        android:visible="false" />
+        <item
+            android:id="@+id/menu_profil"
+            android:icon="@drawable/ic_shopping_cart_black_24dp"
+            android:title="profil"
+            android:visible="false" />
+
+        <item
+            android:id="@+id/menu_logout"
+            android:icon="@drawable/ic_close_black_24dp"
+            android:title="logout"
+            android:visible="false" />
+    </group>
+
 </menu>

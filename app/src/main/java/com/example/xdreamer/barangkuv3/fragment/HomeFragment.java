@@ -121,10 +121,10 @@ public class HomeFragment extends Fragment {
                     @Override
                     public void onClick(View view, int position, boolean isLongClick) {
                         Intent barangs = new Intent(getActivity(), DetailProduk.class);
-                        barangs.putExtra("namabarang", model.getNamabarang());
-                        barangs.putExtra("imagebarang", model.getImagebarang());
-                        barangs.putExtra("deskbarang", model.getDeskbarang());
+                        barangs.putExtra("imagebarang", R.drawable.load);
+                        barangs.putExtra("namabarang", model.getNamabarang().toString());
                         barangs.putExtra("hargabarang", model.getHargabarang());
+                        barangs.putExtra("deskbarang", model.getDeskbarang().toString());
                         startActivity(barangs);
                     }
 

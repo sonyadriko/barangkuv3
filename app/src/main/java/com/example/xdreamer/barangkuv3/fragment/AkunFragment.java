@@ -41,7 +41,6 @@ public class AkunFragment extends Fragment implements View.OnClickListener {
         daftar = v.findViewById(R.id.butBefDaftar);
        // logout = v.findViewById(R.id.buttonlogout);
 
-        logout.setOnClickListener(this);
         masuk.setOnClickListener(this);
         daftar.setOnClickListener(this);
         return v;

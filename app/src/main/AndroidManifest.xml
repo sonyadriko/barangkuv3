@@ -20,16 +20,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MasukActivity"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".DaftarActivity"
-            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".MasukActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".DaftarActivity"
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".HomeProduk" />
         <activity android:name=".DetailKategori" />
         <activity android:name=".DetailProduk" />
         <activity android:name=".ViewItem" />
-        <activity android:name=".ResetPassword"
-            android:parentActivityName=".MasukActivity"></activity>
+        <activity
+            android:name=".ResetPassword"
+            android:parentActivityName=".MasukActivity" />
+        <activity android:name=".Transaksi"></activity>
     </application>
 
 </manifest>
