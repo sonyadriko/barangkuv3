@@ -1,5 +1,6 @@
 package com.example.xdreamer.barangkuv3;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -168,6 +169,7 @@ public class MainActivity extends AppCompatActivity {
     }
     */
 
+
     private void setToolbarTitle() {
         getSupportActionBar().setTitle(activityTitle[navItemIndex]);
     }
@@ -188,15 +190,19 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.menu_kategori:
                         navItemIndex = 1;
                         CURRENT_TAG = TAG_KATEGORI;
+                        break;
                     case R.id.menu_keranjang:
                         navItemIndex = 2;
                         CURRENT_TAG = TAG_KERANJANG;
+                        break;
                     case R.id.menu_profil:
                         navItemIndex = 3;
                         CURRENT_TAG = TAG_PROFIL;
+                        break;
                     case R.id.menu_faq:
                         navItemIndex = 4;
                         CURRENT_TAG = TAG_FAQ;
+                        break;
                     default:
                         navItemIndex = 0;
                 }
