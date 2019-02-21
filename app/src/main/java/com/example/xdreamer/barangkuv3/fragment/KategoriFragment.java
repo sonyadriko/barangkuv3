@@ -37,7 +37,7 @@ import com.squareup.picasso.Picasso;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class InboxFragment extends Fragment {
+public class KategoriFragment extends Fragment {
 
     View v;
     RecyclerView listCat;
@@ -49,7 +49,7 @@ public class InboxFragment extends Fragment {
     DatabaseReference categories;
 
 
-    public InboxFragment() {
+    public KategoriFragment() {
         // Required empty public constructor
     }
 

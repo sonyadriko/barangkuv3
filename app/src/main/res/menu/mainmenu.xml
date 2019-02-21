@@ -5,45 +5,49 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/menu_home"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="@string/menu_home"
+            android:visible="true" />
+        <item
             android:id="@+id/menu_masuk"
             android:icon="@drawable/ic_login"
             android:title="masuk"
-            android:visible="true" />
+            android:visible="false" />
         <item
             android:id="@+id/menu_daftar"
             android:icon="@drawable/ic_daftar"
-            android:title="daftar"
-            android:visible="true" />
-
-        <item
-            android:id="@+id/menu_home"
-            android:icon="@drawable/ic_home_black_24dp"
             android:title="daftar"
             android:visible="false" />
 
         <item
             android:id="@+id/menu_kategori"
             android:icon="@drawable/ic_business_black_24dp"
-            android:title="kategori"
-            android:visible="false" />
+            android:title="@string/menu_kategori"
+            android:visible="true" />
 
         <item
             android:id="@+id/menu_keranjang"
             android:icon="@drawable/ic_shopping_cart_black_24dp"
-            android:title="keranjang"
-            android:visible="false" />
+            android:title="@string/menu_keranjang"
+            android:visible="true" />
 
         <item
             android:id="@+id/menu_profil"
             android:icon="@drawable/ic_shopping_cart_black_24dp"
-            android:title="profil"
-            android:visible="false" />
+            android:title="@string/menu_profil"
+            android:visible="true" />
+        <item
+            android:id="@+id/menu_faq"
+            android:icon="@drawable/ic_chat_bubble_black_24dp"
+            android:title="@string/menu_faq"
+            android:visible="true" />
 
         <item
             android:id="@+id/menu_logout"
             android:icon="@drawable/ic_close_black_24dp"
             android:title="logout"
-            android:visible="false" />
+            android:visible="true" />
     </group>
 
 </menu>

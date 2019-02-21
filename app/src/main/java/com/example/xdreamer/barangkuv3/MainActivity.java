@@ -1,25 +1,27 @@
 package com.example.xdreamer.barangkuv3;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.FrameLayout;
 
 import com.example.xdreamer.barangkuv3.fragment.AkunFragment;
 import com.example.xdreamer.barangkuv3.fragment.HomeFragment;
-import com.example.xdreamer.barangkuv3.fragment.InboxFragment;
+import com.example.xdreamer.barangkuv3.fragment.KategoriFragment;
 import com.example.xdreamer.barangkuv3.fragment.KeranjangFragment;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity {
 
 
     boolean session;
@@ -30,13 +32,31 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private BottomNavigationView botNav;
     private FrameLayout frameLayout;
 
+    private NavigationView navigationView;
+
     private AkunFragment akunFragment;
     private HomeFragment homeFragment;
-    private InboxFragment inboxFragment;
+    private KategoriFragment kategoriFragment;
     private KeranjangFragment keranjangFragment;
     private FirebaseAuth auth;
     private FirebaseAuth.AuthStateListener stateListener;
+    private static final String TAG_HOME = "home";
+    private static final String TAG_KATEGORI = "kategori";
+    private static final String TAG_KERANJANG = "keranjang";
+    private static final String TAG_PROFIL = "profil";
+    private static final String TAG_FAQ = "faq";
+    private static final String TAG_SETTINGS = "settings";
+    public static String CURRENT_TAG = TAG_HOME;
 
+    // toolbar titles respected to selected nav menu item
+    private String[] activityTitle;
+
+    private static int navItemIndex = 0;
+
+    private android.support.v7.widget.Toolbar toolbar;
+
+    private boolean shouldLoadHomeFragOnBackPress = true;
+    private Handler mHandler;
     private DrawerLayout drawer;
 
     @Override
@@ -44,18 +64,77 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mHandler = new Handler();
+
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+        navigationView = findViewById(R.id.nav_view);
+
+
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
 
+        activityTitle = getResources().getStringArray(R.array.nav_item_activity_titles);
 
+        SetUpNavigationView();
+
+
+        if (savedInstanceState == null) {
+            navItemIndex = 0;
+            CURRENT_TAG = TAG_HOME;
+            loadHomeFragment();
+        }
+    }
+
+    private void loadHomeFragment() {
+        selectNavMenu();
+
+        setToolbarTitle();
+
+        if (getSupportFragmentManager().findFragmentByTag(CURRENT_TAG) != null) {
+            drawer.closeDrawers();
+            return;
+        }
+        Runnable mPendingRunnable = new Runnable() {
+            @Override
+            public void run() {
+                Fragment fragment = getHomeFragment();
+                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_container, fragment, CURRENT_TAG);
+                fragmentTransaction.commitAllowingStateLoss();
+            }
+        };
+        if (mPendingRunnable != null) {
+            mHandler.post(mPendingRunnable);
+        }
+        drawer.closeDrawers();
+
+        invalidateOptionsMenu();
 
     }
 
-    @Override
+    private Fragment getHomeFragment() {
+        switch (navItemIndex) {
+            case 0:
+                HomeFragment homeFragment = new HomeFragment();
+                return homeFragment;
+            case 1:
+                KategoriFragment kategoriFragment = new KategoriFragment();
+                return kategoriFragment;
+            case 2:
+                KeranjangFragment keranjangFragment = new KeranjangFragment();
+                return keranjangFragment;
+            case 3:
+                AkunFragment akunFragment = new AkunFragment();
+                return akunFragment;
+            default:
+                return new HomeFragment();
+        }
+    }
+
+/*
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_home:
@@ -70,7 +149,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(s);
                 break;
             case R.id.menu_kategori:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new InboxFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new KategoriFragment()).commit();
                 break;
             case R.id.menu_keranjang:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new KeranjangFragment()).commit();
@@ -87,7 +166,99 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
+    */
 
+    private void setToolbarTitle() {
+        getSupportActionBar().setTitle(activityTitle[navItemIndex]);
+    }
+
+    private void selectNavMenu() {
+        navigationView.getMenu().getItem(navItemIndex).setChecked(true);
+    }
+
+    private void SetUpNavigationView() {
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.menu_home:
+                        navItemIndex = 0;
+                        CURRENT_TAG = TAG_HOME;
+                        break;
+                    case R.id.menu_kategori:
+                        navItemIndex = 1;
+                        CURRENT_TAG = TAG_KATEGORI;
+                    case R.id.menu_keranjang:
+                        navItemIndex = 2;
+                        CURRENT_TAG = TAG_KERANJANG;
+                    case R.id.menu_profil:
+                        navItemIndex = 3;
+                        CURRENT_TAG = TAG_PROFIL;
+                    case R.id.menu_faq:
+                        navItemIndex = 4;
+                        CURRENT_TAG = TAG_FAQ;
+                    default:
+                        navItemIndex = 0;
+                }
+                if (menuItem.isChecked()) {
+                    menuItem.setChecked(false);
+                } else {
+                    menuItem.setChecked(true);
+                }
+                menuItem.setChecked(true);
+                loadHomeFragment();
+                return true;
+            }
+        });
+
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                // Code here will be triggered once the drawer closes as we dont want anything to happen so we leave this blank
+                super.onDrawerClosed(drawerView);
+            }
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                // Code here will be triggered once the drawer open as we dont want anything to happen so we leave this blank
+                super.onDrawerOpened(drawerView);
+            }
+        };
+        drawer.setDrawerListener(actionBarDrawerToggle);
+
+        actionBarDrawerToggle.syncState();
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawers();
+            return;
+        }
+
+        if (shouldLoadHomeFragOnBackPress){
+            if (navItemIndex != 0){
+                navItemIndex = 0;
+                CURRENT_TAG = TAG_HOME;
+                loadHomeFragment();
+                return;
+            }
+        }
+
+
+        super.onBackPressed();
+    }
+/*
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        if (navItemIndex == 0) {
+            getMenuInflater().inflate(R.menu.mainmenu, menu);
+        }
+
+        return true;
+    }
+*/
 
     // userPreference = new UserPreference(getApplicationContext());
 /*
@@ -95,7 +266,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         frameLayout = findViewById(R.id.frame_main);
         akunFragment = new AkunFragment();
         homeFragment = new HomeFragment();
-        inboxFragment = new InboxFragment();
+        kategoriFragment = new KategoriFragment();
         keranjangFragment = new KeranjangFragment();
         auth = FirebaseAuth.getInstance();
 
@@ -133,7 +304,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         setFragment(homeFragment);
                         return true;
                     case R.id.nav_inbox:
-                        setFragment(inboxFragment);
+                        setFragment(kategoriFragment);
                         return true;
                     case R.id.nav_keranjang:
                         setFragment(keranjangFragment);

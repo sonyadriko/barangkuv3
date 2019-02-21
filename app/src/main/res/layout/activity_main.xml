@@ -21,9 +21,8 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        app:menu="@menu/mainmenu">
+        app:menu="@menu/mainmenu"/>
 
-    </android.support.design.widget.NavigationView>
 
 
    <!-- <FrameLayout
